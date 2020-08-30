@@ -9,7 +9,7 @@ import {
 const logger = winston.createLogger({
   level      : 'info',
   format     : winston.format.json(),
-  defaultMeta: { service: `service-${appName}` },
+  defaultMeta: { service: `api-service-${appName}` },
 });
 
 // Log to the console

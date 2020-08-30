@@ -1,15 +1,19 @@
 import { apiVersion } from 'config/variables';
-import Koa from 'koa';
 import Router from 'koa-router';
+import { StatefulKoa } from 'types';
+import { authSubRouter } from './auth/auth.routes';
 import { graphqlSubRouter } from './graphql/graphql.routes';
+import { userSubRouter } from './user/user.routes';
 
-const registerRouters = (app: Koa): Koa => {
+const registerRouters = (app: StatefulKoa): StatefulKoa => {
 
   const router = new Router({
-    prefix: `/${apiVersion}`,
+    prefix: `/api/${apiVersion}`,
   });
 
+  router.use(authSubRouter());
   router.use(graphqlSubRouter());
+  router.use(userSubRouter());
 
   app
     .use(router.routes())

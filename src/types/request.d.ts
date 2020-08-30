@@ -1,17 +1,27 @@
-type RequestWithUuid = {
-  requestUuid: string
+type LoginRequest = {
+  email: string,
+  password: string
 };
 
-type WithValidatedRequest<M> = {
-  validatedRequest: M
+type LogoutRequest = {
+  token: string
 };
 
-type WithRecords<M> = {
-  records: M
+type SetPasswordRequest = {
+  email: string,
+  password: string
 };
 
-type WithBody<M> = {
-  request: {
-    body: M
+type RequestResetPasswordRequest = {
+  email: string,
+  password: string
+};
+
+type RegisterThirdPartyRequest = {
+  user: {
+    name?: string,
+    email: string,
+    profilePicture?: string,
+    googleId?: string
   }
 };
